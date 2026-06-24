@@ -3,6 +3,35 @@
   "use strict";
 
   /* =========================================================
+     Analytics (GA4) — gtag is loaded per-page in <head>.
+     These helpers no-op safely if it's blocked or absent.
+     ========================================================= */
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+    } catch (e) { /* never let analytics break the page */ }
+  }
+  function labelOf(el) {
+    if (!el) return "";
+    var t = (el.getAttribute("aria-label") || el.textContent || "").replace(/\s+/g, " ").trim();
+    return t.slice(0, 100);
+  }
+
+  /* Mark every button / link press. Capture phase so it still fires even when
+     a handler calls stopPropagation (e.g. the language button). */
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest && e.target.closest("a, button, [data-ga]");
+    if (!el) return;
+    var href = el.getAttribute("href") || "";
+    var isButton = el.tagName === "BUTTON" || el.classList.contains("btn");
+    track(isButton ? "button_click" : "link_click", {
+      label: labelOf(el),
+      target: href || el.id || "",
+      page_path: location.pathname
+    });
+  }, true);
+
+  /* =========================================================
      CONFIG — paste your Google Apps Script Web App URL here
      (see GOOGLE-SHEET-SETUP.md). Leads go to a Google Sheet
      on porshianboti@gmail.com.
@@ -52,6 +81,7 @@
       });
       if (isOpen) { item.classList.remove("open"); a.style.maxHeight = null; }
       else { item.classList.add("open"); a.style.maxHeight = a.scrollHeight + "px"; }
+      track("faq_toggle", { action: isOpen ? "close" : "open", question: labelOf(q), page_path: location.pathname });
     });
   });
 
@@ -161,6 +191,7 @@
     pop.classList.add("open");
     positionPop();
     setTimeout(function () { inName.focus(); }, 60);
+    track("lead_form_open", { source: labelOf(trigger), page_path: location.pathname });
   }
 
   function closePop() {
@@ -199,6 +230,11 @@
       formBox.style.display = "none";
       okBox.style.display = "";
       positionPop();
+      track("generate_lead", {
+        source: payload.get("source"),
+        lang: isHe ? "he" : "en",
+        page_path: location.pathname
+      });
     };
 
     if (LEAD_ENDPOINT) {
