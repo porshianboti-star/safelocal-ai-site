@@ -1,79 +1,51 @@
-# Daily SEO rankings report
+# Daily SEO rankings report (Google Apps Script)
 
-A scheduled GitHub Action (`.github/workflows/seo-report.yml`) runs every day
-~11:00 Israel time, reads the keywords from [`keywords.md`](keywords.md), pulls
-metrics from **Google Search Console**, and appends one dated row per keyword to
-a **Google Sheet**:
+Appends a dated keyword-rankings block to a tab named **"SEO Rankings"** in your
+Google Sheet, every day at **11:00** (Israel time):
 
 | תאריך | מילת חיפוש | כמות חיפושים (Impressions) | מיקום האתר שלנו |
 |---|---|---|---|
 
-> **"כמות חיפושים":** GSC has no market search-volume figure. We use
-> **Impressions** (times safelocal.ai was shown for the query in the last 7
-> days) as the first-party proxy. `0` / `—` = the site isn't surfacing for that
-> keyword yet. Since the site launched recently, expect mostly zeros for the
-> first few weeks until Google crawls and starts ranking it.
+The script runs **as you** — since you verified `safelocal.ai` in Search Console
+and own the sheet, it has access automatically. **No service account, no API
+key, no secrets.**
+
+> **"כמות חיפושים":** Search Console has no market search-volume number, so we
+> use **Impressions** (times safelocal.ai was shown for the query in the last 7
+> days) as the proxy. `0` / `—` means the site isn't surfacing for that keyword
+> yet — expect mostly zeros for the first few weeks after launch.
 
 ---
 
-## One-time setup (your Google account)
+## Setup (one time, ~3 minutes)
 
-### 1. Verify `safelocal.ai` in Google Search Console
-- https://search.google.com/search-console → **Add property** → **Domain** →
-  `safelocal.ai` → add the TXT record it gives you to DNS. (Domain property is
-  recommended; it covers en/he/vs and www. If you instead use a **URL-prefix**
-  property, set the repo variable `GSC_SITE_URL` to `https://safelocal.ai/`.)
+1. Open the **Google Sheet** you want the report in.
+2. Menu **Extensions → Apps Script** (opens the script editor).
+3. Click the **⚙️ Project Settings** (left sidebar) and tick
+   **"Show 'appsscript.json' manifest file in editor."**
+4. Back in **Editor** (`</>`):
+   - Open **`Code.gs`**, delete everything, and paste the contents of
+     [`Code.gs`](Code.gs).
+   - Open **`appsscript.json`**, delete everything, and paste the contents of
+     [`appsscript.json`](appsscript.json). Save (💾).
+5. In the function dropdown (top toolbar) pick **`setupDailyTrigger`** → click
+   **Run**. Google will ask for permission:
+   - Choose your account → on the "Google hasn't verified this app" screen click
+     **Advanced → Go to (project) (unsafe)** → **Allow**. (This is normal for a
+     personal script; the "app" is your own script.)
+6. Pick **`runReport`** → **Run** once to test. Check the new **"SEO Rankings"**
+   tab — you should see today's rows.
 
-### 2. Create a service account + enable APIs
-- In Google Cloud Console (any project): **APIs & Services → Enable APIs** →
-  enable **Google Search Console API** and **Google Sheets API**.
-- **IAM & Admin → Service Accounts → Create**. No project roles needed.
-- On the service account → **Keys → Add key → JSON** → download the file.
-- Note the service account email, e.g. `seo-report@<project>.iam.gserviceaccount.com`.
-
-### 3. Grant the service account access
-- **GSC:** property → **Settings → Users and permissions → Add user** → the SA
-  email → permission **Full** (or Restricted).
-- **Sheet:** create a Google Sheet for the report, **Share** it with the SA
-  email as **Editor**. Copy its **spreadsheet id** from the URL
-  (`https://docs.google.com/spreadsheets/d/<THIS_PART>/edit`).
-
-### 4. Store the secrets in the repo
-From this repo:
-```bash
-gh secret set GSC_SA_KEY  < /path/to/service-account.json
-gh secret set SEO_SHEET_ID --body "<spreadsheet id>"
-# only if you used a URL-prefix property instead of a Domain property:
-gh variable set GSC_SITE_URL --body "https://safelocal.ai/"
-```
-
-That's it — the daily job will start populating the sheet.
+That's it. From now on it runs by itself daily at 11:00.
 
 ---
 
-## Run / test manually
-```bash
-gh workflow run "Daily SEO rankings report"   # trigger now
-gh run watch                                   # follow it
-```
-
-Local run:
-```bash
-pip install -r seo-report/requirements.txt
-export GSC_SA_KEY="$(cat /path/to/service-account.json)"
-export SEO_SHEET_ID="<spreadsheet id>"
-python seo-report/gsc_to_sheet.py
-```
-
-## Config (env vars)
-| var | required | default | meaning |
-|---|---|---|---|
-| `GSC_SA_KEY` | ✅ | — | service-account JSON (string) |
-| `SEO_SHEET_ID` | ✅ | — | target spreadsheet id |
-| `GSC_SITE_URL` | | `sc-domain:safelocal.ai` | GSC property |
-| `SEO_SHEET_TAB` | | `Rankings` | worksheet/tab name |
-| `LOOKBACK_DAYS` | | `7` | rolling metrics window |
-
-## Add / remove keywords
-Edit [`keywords.md`](keywords.md) — each tracked term is a backtick-wrapped
-markdown list item (`` - `keyword` ``). Commit; the next run picks it up.
+## Notes
+- **Property type:** the script defaults to a **Domain** property
+  (`sc-domain:safelocal.ai`). If you verified a **URL-prefix** property instead,
+  change `SITE_URL` at the top of `Code.gs` to `'https://safelocal.ai/'`.
+- **Keywords** are read live from [`keywords.md`](keywords.md) in the GitHub
+  repo (single source of truth). Edit that file to add/remove a tracked
+  keyword — no need to touch the script. (A fallback copy is embedded in case
+  the fetch fails.)
+- **Change the time:** edit `.atHour(11)` in `setupDailyTrigger` and re-run it.
