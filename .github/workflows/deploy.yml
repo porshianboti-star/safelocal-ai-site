@@ -1,0 +1,74 @@
+name: Deploy static site
+
+# Static HTML site (no build). On push to master, sync the site files into the
+# Caddy webroot on the shared GCP VM (/var/www/sites/safelocal). The Caddy
+# snippet already on the VM serves that webroot (/ -> /<loc>/ redirect,
+# file_server, www -> apex) and is unchanged here, so no caddy reload is needed.
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GCP_PROJECT: kinotale
+  GCP_ZONE: us-central1-a
+  GCP_INSTANCE: kinotale-app
+  SLUG: safelocal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stage site files
+        # Everything except repo plumbing and project docs goes to the webroot.
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            --exclude='*.md' \
+            --exclude='*.gs' \
+            --exclude='.gitignore' \
+            ./ _site/
+          echo "Staged files:"; find _site -maxdepth 2 -type f | sort
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy to VM
+        run: |
+          set -euo pipefail
+          SSH="gcloud compute ssh ${GCP_INSTANCE} --zone ${GCP_ZONE} --project ${GCP_PROJECT} --quiet --command"
+          SCP="gcloud compute scp --zone ${GCP_ZONE} --project ${GCP_PROJECT} --quiet --recurse"
+
+          # /var/www/sites is the tree mounted into the Caddy container; files
+          # written elsewhere are invisible inside it. Stage in /tmp, atomic swap.
+          $SSH "sudo mkdir -p /var/www/sites"
+          $SCP "_site" "${GCP_INSTANCE}:/tmp/deploy-${SLUG}"
+          $SSH "sudo rm -rf /var/www/sites/${SLUG} && sudo mv /tmp/deploy-${SLUG} /var/www/sites/${SLUG} && sudo chmod -R a+rX /var/www/sites/${SLUG}"
+
+      - name: Smoke test
+        # Curl a REAL page, not just / (which 302-redirects even on an all-404 site).
+        run: |
+          set -uo pipefail
+          code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://safelocal.ai/en/" || echo 000)"
+          echo "https://safelocal.ai/en/ -> $code"
+          test "$code" = "200"
