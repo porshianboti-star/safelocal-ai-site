@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>SafeLocal vs JeffyAI — Enterprise-Grade Local LLM GUI &amp; Alternative</title>
+  <meta name="description" content="SafeLocal vs JeffyAI: a managed, enterprise-grade local AI platform vs a DIY local LLM GUI. Compare UI/UX, compliance, deployment, and scalability for self-hosted AI in business." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://safelocal.ai/vs/jeffyai/" />
+  <link rel="alternate" hreflang="en" href="https://safelocal.ai/vs/jeffyai/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SafeLocal AI" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="SafeLocal vs JeffyAI — Enterprise Local AI vs DIY Local LLM GUI" />
+  <meta property="og:description" content="A managed, compliant, enterprise-grade local AI platform compared to a DIY local LLM GUI. See where SafeLocal wins on UX, compliance, and scale." />
+  <meta property="og:url" content="https://safelocal.ai/vs/jeffyai/" />
+  <meta property="og:image" content="https://safelocal.ai/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SafeLocal vs JeffyAI — Enterprise Local AI Alternative" />
+  <meta name="twitter:description" content="Managed, compliant, enterprise-grade local AI vs a DIY local LLM GUI." />
+  <meta name="twitter:image" content="https://safelocal.ai/og.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../../assets/img/shield-node.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+
+  <!-- AEO: Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SafeLocal AI",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, Linux, On-Premise Appliance",
+    "description": "Enterprise-grade, managed self-hosted AI platform and local LLM GUI alternative to DIY tools like JeffyAI and Ollama. Adds RBAC, SSO, automation APIs, compliance evidence, and a 24/7 SLA on top of local inference.",
+    "url": "https://safelocal.ai/vs/jeffyai/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Capacity-based enterprise licensing. Contact sales for a quote." },
+    "publisher": { "@type": "Organization", "name": "SafeLocal AI", "url": "https://safelocal.ai" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://safelocal.ai/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://safelocal.ai/en/#comparison" },
+      { "@type": "ListItem", "position": 3, "name": "SafeLocal vs JeffyAI", "item": "https://safelocal.ai/vs/jeffyai/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between SafeLocal and JeffyAI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "JeffyAI is a local LLM GUI for running open-source models on your own machine. SafeLocal is a managed, enterprise-grade platform built on the same idea of local inference but adds the layer businesses need: one-click corporate deployment, enterprise RBAC and SSO, native automation APIs into internal systems, centralized audit and governance, secure external enrichment, and a 24/7 SLA. SafeLocal turns a single-user local tool into a compliant, multi-user production platform." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SafeLocal a good local LLM GUI for companies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. SafeLocal provides a polished local LLM GUI designed for non-technical employees, plus central administration for IT. Where DIY GUIs are single-user and require manual model and dependency management, SafeLocal offers managed updates, role-based access, shared office-appliance deployment, and audit logging — making it suitable for whole teams rather than individual tinkerers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need technical skills to run SafeLocal?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. SafeLocal ships as a one-click Windows installer (MSI) for desktops or a pre-configured office appliance. There is no terminal setup, manual model downloading, or dependency wrangling — unlike DIY local AI stacks that expect command-line assembly." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can SafeLocal scale beyond a single workstation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. SafeLocal scales from a single workstation to a shared office appliance to multi-node GPU clusters for organization-wide rollouts, with centralized governance throughout. DIY local GUIs are typically bound to one machine and one user." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a class="brand" href="../../en/">
+          <img src="../../assets/img/shield-node.svg" alt="SafeLocal.ai" />
+          <span class="brand__word">SafeLocal<span class="dot">.</span>ai</span>
+        </a>
+        <ul class="nav__links">
+          <li><a href="../../en/#features">Solutions</a></li>
+          <li><a href="../../en/#showcase">Architecture</a></li>
+          <li><a href="../chatgpt/">vs ChatGPT</a></li>
+          <li><a href="../jeffyai/">vs JeffyAI</a></li>
+          <li><a href="../../en/#pricing">Pricing</a></li>
+        </ul>
+        <div class="nav__right">
+          <div class="lang" id="lang">
+            <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false">🇬🇧 English ▾</button>
+            <div class="lang__menu" role="menu">
+              <a href="../../en/">🇬🇧 English</a>
+              <a href="../../he/">🇮🇱 עברית</a>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="#signup">Request a Demo</a>
+          <button class="nav__toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="hero__grid">
+          <div>
+            <span class="eyebrow">SafeLocal vs JeffyAI</span>
+            <h1 class="hero__title">
+              The <span class="g">enterprise-grade</span> local AI, not a DIY GUI
+            </h1>
+            <p class="hero__sub">JeffyAI gives one person a local model. SafeLocal gives the whole company a managed, compliant, on-premise AI platform — with the UX, governance, and scale a business actually needs.</p>
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--lg" href="#signup">Request a Demo</a>
+              <a class="btn btn--ghost btn--lg" href="#table">See full comparison</a>
+            </div>
+          </div>
+
+          <!-- Mockup -->
+          <div class="mock" aria-hidden="true">
+            <div class="mock__bar">
+              <div>
+                <div class="mock__title">SafeLocal Admin Console</div>
+                <div class="mock__meta">org · 240 seats · 3 sites · RBAC on</div>
+              </div>
+              <span class="pill">Managed</span>
+            </div>
+            <div class="mock__body">
+              <div class="msg msg--user">
+                <div class="msg__who">IT Administrator</div>
+                <div class="msg__bubble">Roll out the legal-team model to the Tel Aviv office and restrict export.</div>
+              </div>
+              <div class="msg msg--ai">
+                <div class="msg__who">SafeLocal · central management</div>
+                <div class="msg__bubble">Deployed to 38 seats. Export disabled, audit logging on, SSO enforced. No terminal required. ✓</div>
+              </div>
+            </div>
+            <div class="mock__foot">
+              <span>Central governance</span>
+              <span><strong>1-click</strong> rollout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why teams switch ===== -->
+    <section class="section problem">
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <div class="section__head" style="margin-bottom:0;">
+          <h2>DIY local AI runs out of road at the company boundary</h2>
+          <div class="problem__list">
+            <div class="problem__item"><span class="x">!</span><span>A single-user local LLM GUI has no RBAC, no SSO, no audit trail, and no central management — so IT can't govern or roll it out safely.</span></div>
+            <div class="problem__item"><span class="x">!</span><span>Manual model downloads, dependency conflicts, and terminal setup don't scale past the one engineer who built it.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Comparison table ===== -->
+    <section class="section" id="table">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Head to head</span>
+          <h2>SafeLocal vs JeffyAI — managed platform vs DIY GUI</h2>
+          <p class="lead">Both keep inference local. The difference is everything around the model that makes it safe and usable across a company.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th class="is-safelocal">SafeLocal Enterprise</th>
+                <th>JeffyAI (DIY Local GUI)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Local inference</td><td class="is-safelocal"><span class="yes">Yes</span> — on your hardware</td><td class="meh">Yes — on one machine</td></tr>
+              <tr><td>UI/UX for non-technical staff</td><td class="is-safelocal"><span class="yes">Polished, guided UI</span></td><td class="meh">Developer-oriented</td></tr>
+              <tr><td>Deployment</td><td class="is-safelocal"><span class="yes">One-click MSI / appliance</span></td><td class="meh">Manual install &amp; model setup</td></tr>
+              <tr><td>Multi-user &amp; access control</td><td class="is-safelocal"><span class="yes">Enterprise RBAC + SSO</span></td><td class="meh">Single-user, none</td></tr>
+              <tr><td>Internal system automation</td><td class="is-safelocal"><span class="yes">Native APIs</span> — CRM, ERP, files</td><td class="meh">Manual scripting only</td></tr>
+              <tr><td>Compliance evidence</td><td class="is-safelocal"><span class="yes">Built-in &amp; exportable</span></td><td class="meh">Your problem</td></tr>
+              <tr><td>Audit logging</td><td class="is-safelocal"><span class="yes">Immutable logs</span></td><td class="meh">None</td></tr>
+              <tr><td>Scale</td><td class="is-safelocal"><span class="yes">Desktop → appliance → cluster</span></td><td class="meh">Single workstation</td></tr>
+              <tr><td>Support &amp; SLA</td><td class="is-safelocal"><span class="yes">24/7 Enterprise SLA</span></td><td class="meh">Community / best-effort</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-note">Comparison reflects typical configurations as of 2026. JeffyAI and Ollama are trademarks of their respective owners and are referenced for comparison only.</p>
+      </div>
+    </section>
+
+    <!-- ===== Advantage band ===== -->
+    <section class="section section--tint" id="advantage">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Where SafeLocal pulls ahead</span>
+          <h2>The enterprise layer DIY tools don't have</h2>
+          <p class="lead">SafeLocal keeps the privacy of local inference and adds the management, compliance, and scale a business runs on.</p>
+        </div>
+        <div class="flow">
+          <div class="flow__step">
+            <span class="flow__num">01</span>
+            <div class="flow__tag">Experience</div>
+            <h3>Designed for every employee</h3>
+            <p>A clean, guided interface anyone can use — no terminal, no model wrangling — so adoption isn't limited to engineers.</p>
+            <span class="flow__note">Built for teams</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">02</span>
+            <div class="flow__tag">Governance</div>
+            <h3>IT keeps control</h3>
+            <p>RBAC, SSO, central policy, and immutable audit logs let security teams roll out AI without losing oversight.</p>
+            <span class="flow__note">Compliant by design</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">03</span>
+            <div class="flow__tag">Scale</div>
+            <h3>From one desk to many sites</h3>
+            <p>Start on a single workstation and grow to a shared appliance or multi-node cluster — same platform, same governance.</p>
+            <span class="flow__note">Enterprise scalability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Signup CTA ===== -->
+    <section class="section signup" id="signup">
+      <div class="container">
+        <div class="signup__card">
+          <span class="eyebrow center" style="display:inline-flex;">Request a demo</span>
+          <h2>Local AI your whole company can actually run</h2>
+          <p>See SafeLocal deployed against your own architecture — desktop, office appliance, or air-gapped — with central management from day one.</p>
+          <a class="btn btn--primary btn--lg" href="#signup">Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section section--tint" id="faq">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">JeffyAI alternative FAQ</span>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq">
+          <div class="faq__item">
+            <button class="faq__q">What is the difference between SafeLocal and JeffyAI?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">JeffyAI is a local LLM GUI for running open-source models on your own machine. SafeLocal is a managed, enterprise-grade platform built on the same idea of local inference but adds the layer businesses need: one-click corporate deployment, enterprise RBAC and SSO, native automation APIs into internal systems, centralized audit and governance, secure external enrichment, and a 24/7 SLA. SafeLocal turns a single-user local tool into a compliant, multi-user production platform.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">Is SafeLocal a good local LLM GUI for companies?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">Yes. SafeLocal provides a polished local LLM GUI designed for non-technical employees, plus central administration for IT. Where DIY GUIs are single-user and require manual model and dependency management, SafeLocal offers managed updates, role-based access, shared office-appliance deployment, and audit logging — making it suitable for whole teams rather than individual tinkerers.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">Do I need technical skills to run SafeLocal?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">No. SafeLocal ships as a one-click Windows installer (MSI) for desktops or a pre-configured office appliance. There is no terminal setup, manual model downloading, or dependency wrangling — unlike DIY local AI stacks that expect command-line assembly.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">Can SafeLocal scale beyond a single workstation?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">Yes. SafeLocal scales from a single workstation to a shared office appliance to multi-node GPU clusters for organization-wide rollouts, with centralized governance throughout. DIY local GUIs are typically bound to one machine and one user.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="../../en/"><img src="../../assets/img/shield-node.svg" alt="SafeLocal.ai" /><span class="brand__word">SafeLocal<span class="dot">.</span>ai</span></a>
+          <p>Your AI. Your hardware. Completely safe &amp; local. The managed, enterprise-grade local AI platform.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="../../en/#features">Solutions</a>
+          <a href="../../en/#showcase">Secure Enrichment</a>
+          <a href="../../en/#pricing">Pricing</a>
+        </div>
+        <div class="footer__col">
+          <h4>Compare</h4>
+          <a href="../chatgpt/">vs ChatGPT</a>
+          <a href="../jeffyai/">vs JeffyAI</a>
+          <a href="../../en/#comparison">Full table</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="mailto:sales@safelocal.ai">Contact sales</a>
+          <a href="#signup">Request demo</a>
+          <a href="../../he/">עברית</a>
+        </div>
+      </div>
+      <div class="footer__bottom">© <span data-year>2026</span> SafeLocal AI. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

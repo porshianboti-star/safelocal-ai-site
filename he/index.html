@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>SafeLocal AI — בינה מלאכותית ארגונית מאובטחת ומקומית</title>
+  <meta name="description" content="בינה מלאכותית ארגונית באירוח עצמי, מקומית לחלוטין. הפעילו מודלי LLM ואוטומציות מאובטחות בתוך הרשת שלכם, ללא דליפת נתונים. תואמת SOC 2, GDPR ו-HIPAA." />
+  <link rel="canonical" href="https://safelocal.ai/he/" />
+  <link rel="alternate" hreflang="en" href="https://safelocal.ai/en/" />
+  <link rel="alternate" hreflang="he" href="https://safelocal.ai/he/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SafeLocal AI" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:title" content="SafeLocal AI — ה-AI שלכם. החומרה שלכם. בטוח ומקומי לחלוטין." />
+  <meta property="og:description" content="הטמיעו אוטומציות AI מאובטחות הפועלות בתוך הרשת המקומית שלכם. אפס דליפת נתונים. עמידה מלאה ברגולציה." />
+  <meta property="og:url" content="https://safelocal.ai/he/" />
+  <meta property="og:image" content="https://safelocal.ai/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SafeLocal AI — ה-AI שלכם. החומרה שלכם. בטוח ומקומי לחלוטין." />
+  <meta name="twitter:description" content="הטמיעו אוטומציות AI מאובטחות הפועלות בתוך הרשת המקומית שלכם. אפס דליפת נתונים. עמידה מלאה ברגולציה." />
+  <meta name="twitter:image" content="https://safelocal.ai/og.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/img/shield-node.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>:root{ --font: "Heebo", "Inter", system-ui, sans-serif; }</style>
+
+  <!-- AEO: Structured data (Hebrew) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SafeLocal AI",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, Linux, On-Premise Appliance",
+    "description": "פלטפורמת בינה מלאכותית ארגונית באירוח עצמי, מקומית לחלוטין. הפעלת מודלי LLM ואוטומציות מאובטחות בתוך הרשת שלכם, ללא דליפת נתונים. תואמת SOC 2, GDPR ו-HIPAA.",
+    "url": "https://safelocal.ai/he/",
+    "inLanguage": "he",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS", "description": "רישוי ארגוני מבוסס-קיבולת. צרו קשר עם המכירות לקבלת הצעת מחיר." },
+    "publisher": { "@type": "Organization", "name": "SafeLocal AI", "url": "https://safelocal.ai" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "he",
+    "mainEntity": [
+      { "@type": "Question", "name": "כיצד SafeLocal מבטיחה אפס דליפת נתונים בעת חיפושים באינטרנט?", "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal מבוססת על ארכיטקטורה דו-לולאתית. הלולאה החיצונית מבצעת אחזור אנונימי של מידע ציבורי מהאינטרנט, דרך פרוקסי יציאה מבודד שאינו נושא מזהים פנימיים, הנחיות או נתוני CRM. המידע הציבורי שנאסף עובר טיהור ומוזרם בכיוון אחד בלבד אל הלולאה הפנימית, שם מודל LLM מקומי הרץ כולו על החומרה שלכם ממזג אותו עם הנתונים הפנימיים החסויים. שום נתון פנימי, ייצוג וקטורי או הנחיה אינם נשלחים החוצה אי-פעם." } },
+      { "@type": "Question", "name": "מהן דרישות החומרה לפריסה ארגונית מקומית?", "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal מתאימה את עצמה מתחנת עבודה בודדת ועד אשכולות GPU מרובי-צמתים. פריסה מחלקתית אופיינית רצה על שרת יחיד עם NVIDIA A100/H100 (או 2× RTX 6000 Ada), זיכרון RAM בנפח 128 GB ואחסון NVMe בנפח 2 TB. הרצה על מעבד בלבד נתמכת עבור מודלים קטנים יותר." } },
+      { "@type": "Question", "name": "האם ניתן לשלב את SafeLocal בסביבות פנימיות מנותקות רשת?", "acceptedAnswer": { "@type": "Answer", "text": "כן. SafeLocal תוכננה לתפעול מלא במצב מנותק רשת. מודלים, תלויות ועדכונים מסופקים באמצעות חבילות התקנה חתומות, במצב לא-מקוון. במצב מנותק רשת, ההעשרה של הלולאה החיצונית מושבתת, וכל ההסקה, האוטומציה והשילוב הפנימי רצים כולם בתוך הרשת המבודדת שלכם." } },
+      { "@type": "Question", "name": "האם SafeLocal עומדת ב-SOC 2, ב-GDPR וב-HIPAA?", "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal תוכננה להיות מוכנה ל-SOC 2, תואמת ל-GDPR ומיושרת ל-HIPAA. מכיוון שכל העיבוד מתבצע על תשתית שבשליטתכם, מיקום הנתונים, משך השמירה והגישה אליהם נשלטים במלואם על ידי המדיניות שלכם." } },
+      { "@type": "Question", "name": "במה שונה SafeLocal מהרצה עצמאית של Ollama או מודלים בקוד פתוח?", "acceptedAnswer": { "@type": "Answer", "text": "מערכות קוד פתוח בהרכבה עצמית, כמו Ollama גולמי או JeffyAI, מספקות לכם סביבת הרצה למודל — אך ללא שכבה ארגונית. SafeLocal מוסיפה פריסה מנוהלת, RBAC ו-SSO ארגוניים, ממשקי API לאוטומציה, צינור העשרה חיצונית מאובטחת, ביקורת וממשל מרכזיים, ו-SLA ארגוני 24/7." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a class="brand" href="#top">
+          <img src="../assets/img/shield-node.svg" alt="SafeLocal.ai" />
+          <span class="brand__word">SafeLocal<span class="dot">.</span>ai</span>
+        </a>
+        <ul class="nav__links">
+          <li><a href="#features">פתרונות</a></li>
+          <li><a href="legal-ai/">משפטי</a></li>
+          <li><a href="enterprise-privacy/">ארגוני</a></li>
+          <li><a href="#comparison">השוואה</a></li>
+          <li><a href="#pricing">תמחור</a></li>
+        </ul>
+        <div class="nav__right">
+          <div class="lang" id="lang">
+            <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false">🇮🇱 עברית ▾</button>
+            <div class="lang__menu" role="menu">
+              <a href="../en/">🇬🇧 English</a>
+              <a href="../he/">🇮🇱 עברית</a>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="#signup">בקשו הדגמה</a>
+          <button class="nav__toggle" id="navToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="hero__grid">
+          <div>
+            <span class="eyebrow">בינה מלאכותית מקומית לחברות צומחות</span>
+            <h1 class="hero__title">
+              <span class="g">ה-AI שלכם.</span><br />
+              החומרה שלכם.<br />
+              לחלוטין<br />
+              <span class="g">בטוח ומקומי.</span>
+            </h1>
+            <p class="hero__sub">הטמיעו אוטומציות AI מאובטחות שרצות בתוך הרשת שלכם — על כל מחשב או על חומרה אחת במשרד. אפס דליפת נתונים. שליטה מלאה.</p>
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--lg" href="#signup">הטמיעו את SafeLocal</a>
+              <a class="btn btn--ghost btn--lg" href="#features">שני הפתרונות</a>
+            </div>
+          </div>
+
+          <!-- Workbench mockup -->
+          <div class="mock" aria-hidden="true">
+            <div class="mock__bar">
+              <div>
+                <div class="mock__title">סביבת עבודה ל-LLM, בארגון</div>
+                <div class="mock__meta">model · llama-3.1-70b · על החומרה שלכם</div>
+              </div>
+              <span class="pill">מקומי</span>
+            </div>
+            <div class="mock__body">
+              <div class="msg msg--user">
+                <div class="msg__who">מנהל תפעול</div>
+                <div class="msg__bubble">כל יום בשעה 10:00, סרקו את ההזמנות של אתמול ושלחו לי במייל את אלו שדורשות מעקב.</div>
+              </div>
+              <div class="msg msg--ai">
+                <div class="msg__who">SafeLocal · רץ מקומית</div>
+                <div class="msg__bubble">האוטומציה נוצרה — מתוזמנת לכל יום בשעה 10:00 על החומרה שלכם. בריצה של היום: 8 הזמנות דורשות מעקב — 3 תשלומים באיחור, 5 ממתינות למלאי. הסיכום נשלח אליכם במייל. ✓</div>
+              </div>
+            </div>
+            <div class="mock__foot">
+              <span>האוטומציה רצה על השרת שלכם</span>
+              <span><strong>0 KB</strong> יצאו מהרשת שלכם</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Problem band ===== -->
+    <section class="section problem">
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <div class="section__head" style="margin-bottom:0;">
+          <h2>בינה מלאכותית בענן הציבורי דולפת. פתרונות שמרכיבים לבד נשארים בלתי מנוהלים.</h2>
+          <div class="problem__list">
+            <div class="problem__item"><span class="x">!</span><span>שליחת נתוני CRM רגישים, מידע פיננסי ונתוני מטופלים אל ChatGPT או Claude משמעה ויתור על השליטה לטובת שרתים של צד שלישי.</span></div>
+            <div class="problem__item"><span class="x">!</span><span>הרכבה עצמית של Ollama או JeffyAI גולמיים מותירה אתכם ללא ממשל ובקרה, ללא עמידה ברגולציה וללא שילוב במערכות הארגון.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Solutions: two ways to deploy ===== -->
+    <section class="section" id="features">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">שתי דרכים להטמיע</span>
+          <h2>בינה מלאכותית פרטית שמתאימה לעסק שלכם</h2>
+          <p class="lead">נבנה לעסקים קטנים ובינוניים — לא רק לארגונים גדולים. בחרו את ההטמעה שמתאימה לאופן שבו החברה שלכם עובדת. שני הפתרונות רצים כולם על החומרה שלכם, ושום דבר לא יוצא מהרשת.</p>
+        </div>
+
+        <div class="solutions">
+          <!-- שורה 1 · טקסט פתרון 1 (רקע רגיל) -->
+          <article class="zig zig--text">
+            <span class="solution__num">פתרון 1 · לכל עמדה</span>
+            <h3>בינה מלאכותית פרטית על המחשב של כל עובד</h3>
+            <p>עוזר AI עצמאי שמותקן על כל תחנת עבודה. סגור ורץ 100% מקומית — עובד גם בלי אינטרנט, ושום נתון לא יוצא מהמכשיר.</p>
+            <ul class="solution__list">
+              <li>עוזר פרטי לכל עובד, על המחשב שלו</li>
+              <li>רץ לגמרי במצב לא-מקוון — סגור ומקומי</li>
+              <li>התקנת Windows פשוטה בלחיצה אחת</li>
+              <li>שום דבר לא יוצא מהמחשב</li>
+            </ul>
+          </article>
+          <!-- שורה 1 · סרטון פתרון 1 (מחשב נייד + קופסת AI מקומית) -->
+          <div class="zig zig--video">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="../assets/video/solution-desktop.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <!-- שורה 2 · סרטון פתרון 2 (חומרה במשרד) -->
+          <div class="zig zig--video">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="../assets/video/solution-appliance.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <!-- שורה 2 · טקסט פתרון 2 (רקע רגיל) -->
+          <article class="zig zig--text">
+            <span class="solution__num">פתרון 2 · חומרה במשרד</span>
+            <h3>חומרת AI אחת ומאובטחת לכל המשרד</h3>
+            <p>קופסת חומרת AI ייעודית שרצה מקומית בתוך המשרדים שלכם ומשרתת את כולם דרך השרת הפנימי של החברה — מוח אחד משותף ומנוהל לכל הצוות.</p>
+            <ul class="solution__list">
+              <li>חומרה אחת משותפת לכל הצוות</li>
+              <li>רצה מקומית על השרת הפנימי במשרד</li>
+              <li>ניהול מרכזי ובקרת גישה</li>
+              <li>שום דבר לא יוצא מהרשת המקומית</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Capabilities included in both -->
+        <div class="included">
+          <span class="included__label">שני הפתרונות כוללים</span>
+          <ul class="included__grid">
+            <li>רץ 100% על החומרה שלכם</li>
+            <li>אוטומציות יומיומיות וצ'אט</li>
+            <li>בקרת גישה ויומני ביקורת</li>
+            <li>מתחבר למערכות הפנימיות שלכם</li>
+            <li>התקנה ועדכונים בלחיצה אחת</li>
+            <li>מידע מקומי — ידידותי ל-GDPR</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Showcase ===== -->
+    <section class="section section--tint" id="showcase">
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">יכולת הדגל</span>
+          <h2>תהליך העשרה חיצונית מאובטח</h2>
+          <p class="lead">צ'אטבוטים מקומיים רגילים מנותקים מהעולם החיצון. SafeLocal לא — והיא עושה זאת בבטחה. דוגמה אמיתית: הכנה אוטומטית של נציג מכירות לפגישה עם לקוח. SafeLocal אוספת מודיעין ציבורי באופן אנונימי, ממזגת אותו מקומית עם נתוני ה-CRM הרגישים ביותר שלכם, ומגבשת את התדריך הניהולי כולו בתוך הארגון. העולם החיצון מזין את הבינה המלאכותית שלכם מבלי לראות את הנתונים שלכם, אף פעם.</p>
+        </div>
+        <div class="flow">
+          <div class="flow__step">
+            <span class="flow__num">01</span>
+            <div class="flow__tag">הלולאה החיצונית · 01</div>
+            <h3>שליפה אנונימית</h3>
+            <p>SafeLocal שולפת מקורות ציבוריים ברשת באופן אנונימי, לאיסוף מידע חיצוני על הלקוח — חדשות, דיווחים רשמיים, מבני ארגון ואיתותי שוק. הבקשות אינן נושאות זהות פנימית, הנחיות או נתוני CRM.</p>
+            <span class="flow__note">יציאה לרשת נטולת זהות</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">02</span>
+            <div class="flow__tag">הלולאה הפנימית · 02</div>
+            <h3>הצלבה פנימית וחסויה</h3>
+            <p>המידע הציבורי, לאחר טיהור, מוזרם בכיוון אחד בלבד ובאופן מאובטח אל התשתית המקומית שלכם. הוא נשמר מאחורי חומת האש שלכם, שם אוטומציות פנימיות יכולות להיעזר בו — אך דבר אינו זורם בחזרה החוצה.</p>
+            <span class="flow__note">קליטה חד-כיוונית ומאובטחת</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">03</span>
+            <div class="flow__tag">צומת מקומי · 03</div>
+            <h3>גיבוש מקומי, בתוך הארגון</h3>
+            <p>מודל LLM מקומי ממזג את הנתונים החיצוניים עם רשומות ה-CRM הפנימיות והחסויות, ומפיק תדריך לקוח מאובטח ומוכן לעסקה — כולו על החומרה שלכם.</p>
+            <span class="flow__note">0% מהנתונים הפנימיים יוצאים מהארגון</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Comparison ===== -->
+    <section class="section" id="comparison">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">ההשוואה הארגונית</span>
+          <h2>SafeLocal מול בינה מלאכותית כשירות בענן מול קוד פתוח בהרכבה עצמית</h2>
+          <p class="lead">השוואת יכולות עניינית, לצוותי אבטחה ורכש ארגוניים שבוחנים בינה מלאכותית מקומית מול מודלי LLM בענן הציבורי ומול מערכות קוד פתוח בלתי מנוהלות.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>יכולת</th>
+                <th class="is-safelocal">SafeLocal Enterprise</th>
+                <th>AI כשירות בענן (ChatGPT Team / Claude)</th>
+                <th>קוד פתוח בהרכבה עצמית (JeffyAI / Ollama)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>פרטיות הנתונים</td><td class="is-safelocal"><span class="yes">מבודד ב-100%</span> — לעולם אינו יוצא מהרשת שלכם</td><td class="meh">שרתים של צד שלישי — מעובד אצל הספק</td><td class="meh">מקומי אך בלתי מנוהל — ללא אכיפת מדיניות</td></tr>
+              <tr><td>אוטומציה של מערכות פנימיות</td><td class="is-safelocal"><span class="yes">ממשקי API ארגוניים מובנים</span> — CRM, ERP, אגם נתונים</td><td class="meh">אסור / מוגבל לענן — ללא גישה למערכות פנימיות</td><td class="meh">ללא ממשק ניהול — סקריפטים ידניים בלבד</td></tr>
+              <tr><td>פריסה</td><td class="is-safelocal"><span class="yes">MSI / שרת בלחיצה אחת</span> — מתקינים מוכנים לארגון</td><td class="meh">ענן בלבד — ללא אפשרות מקומית</td><td class="meh">הגדרה ידנית במסוף — דורש הרכבה ב-CLI</td></tr>
+              <tr><td>העשרה חיצונית מאובטחת</td><td class="is-safelocal"><span class="yes">כן — דו-לולאתי</span> (מידע ציבורי נכנס, דבר אינו יוצא)</td><td class="meh">לא — הנתונים שלכם נשלחים לספק</td><td class="meh">לא — לא קיים</td></tr>
+              <tr><td>עמידה ברגולציה (SOC 2 / GDPR / HIPAA)</td><td class="is-safelocal"><span class="yes">מובנית וניתנת לביקורת</span> — ראיות לפי דרישה</td><td class="meh">באחריות משותפת — תלוי בספק</td><td class="meh">באחריותכם בלבד — ללא בקרות מובנות</td></tr>
+              <tr><td>בקרת גישה וביקורת</td><td class="is-safelocal"><span class="yes">RBAC ארגוני + יומנים</span> — SSO / SAML / OIDC</td><td class="meh">ניהול מוגבל — מסוף הספק</td><td class="meh">אין — בהרכבה עצמית בלבד</td></tr>
+              <tr><td>תמיכה ו-SLA</td><td class="is-safelocal"><span class="yes">SLA ארגוני 24/7</span> — צוות הנדסה ייעודי</td><td class="meh">תמיכה מדורגת — תלוי בתוכנית</td><td class="meh">פורומי קהילה — לפי מיטב המאמץ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="text-align:center;margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--ghost" href="legal-ai/">פתרון למשרדי עורכי דין →</a>
+          <a class="btn btn--ghost" href="enterprise-privacy/">פתרון ארגוני ופיננסי →</a>
+        </p>
+        <p class="cmp-note">ההשוואה משקפת תצורות ארגוניות אופייניות. ChatGPT, Claude, JeffyAI ו-Ollama הם סימנים מסחריים של בעליהם בהתאמה, ומוזכרים לצורכי השוואה בלבד.</p>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="section section--tint" id="pricing">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">תמחור</span>
+          <h2>רישוי פשוט, מותאם לגודל הצוות שלכם</h2>
+          <p class="lead">בחרו לפי צורת ההטמעה — לכל מחשב, חומרה אחת במשרד, או פריסה מרובת-אתרים. ללא הפתעות תמחור לפי טוקן. הכול רץ על החומרה שלכם.</p>
+        </div>
+        <div class="price-grid">
+          <!-- Enterprise — kept, placed first so it sits on the right in RTL -->
+          <div class="plan">
+            <h3>ארגוני</h3>
+            <div class="plan__price">בהתאמה אישית <span>/ לארגון</span></div>
+            <p class="plan__desc">פריסה מרובת-אתרים עם ממשל ובקרה מתקדמים.</p>
+            <ul class="plan__list">
+              <li>כל מה שכלול ב"חומרה במשרד"</li>
+              <li>אפשרויות ריבוי-צמתים ומנותק רשת</li>
+              <li>SSO, ביקורת וראיות תאימות לייצוא</li>
+              <li>מהנדס ייעודי + SLA 24/7</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#signup">דברו עם המכירות</a>
+          </div>
+          <!-- Solution 2 — most popular for mid-size -->
+          <div class="plan plan--featured">
+            <span class="plan__flag">הבחירה הפופולרית</span>
+            <h3>חומרה במשרד</h3>
+            <div class="plan__price">בהתאמה אישית <span>/ לחומרה · שנתי</span></div>
+            <p class="plan__desc">קופסת AI אחת ומאובטחת לכל המשרד, משותפת דרך השרת הפנימי.</p>
+            <ul class="plan__list">
+              <li>חומרה אחת מקומית לכל הצוות</li>
+              <li>משותפת דרך השרת הפנימי בחברה</li>
+              <li>ניהול מרכזי + בקרת גישה</li>
+              <li>הטמעה ותמיכה מועדפת</li>
+            </ul>
+            <a class="btn btn--primary btn--block" href="#signup">בקשו הצעת מחיר</a>
+          </div>
+          <!-- Solution 1 -->
+          <div class="plan">
+            <h3>לכל מחשב</h3>
+            <div class="plan__price">בהתאמה אישית <span>/ לעמדה · שנתי</span></div>
+            <p class="plan__desc">בינה מלאכותית פרטית על המחשב של כל עובד. מצוין לצוותים קטנים בתחילת הדרך.</p>
+            <ul class="plan__list">
+              <li>רישיון שנתי לכל עמדה</li>
+              <li>התקנה עצמאית מקומית (Windows)</li>
+              <li>לא-מקוון לחלוטין — שום נתון לא יוצא מהמכשיר</li>
+              <li>תמיכה במייל ובשעות העבודה</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#signup">קבלו הצעת מחיר</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Security wedge ===== -->
+    <section class="section wedge" id="wedge">
+      <span class="glow glow--a"></span>
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <span class="eyebrow" style="color:#34d6ab;">עמדת אבטחה</span>
+        <h2>נבנה לצוותי אבטחה שפועלים בהנחת פריצה</h2>
+        <p>SafeLocal הופכת את מודל הבינה המלאכותית בענן: במקום לשלוח את הנתונים שלכם אל המודל, אנחנו מביאים את המודל אל הנתונים שלכם. כל שכבה תוכננה סביב גישת חסימה כברירת מחדל, הרשאות מינימום ויכולת ביקורת מלאה.</p>
+        <div class="wedge__grid">
+          <div class="wedge__cell"><strong>אפס יציאת נתונים כברירת מחדל</strong><span>שום נתון אינו יוצא מהארגון ללא מדיניות מפורשת ומתועדת.</span></div>
+          <div class="wedge__cell"><strong>AES-256 ו-TLS 1.3</strong><span>הצפנה באחסון ובתעבורה בכל צומת ומחבר.</span></div>
+          <div class="wedge__cell"><strong>מסלול ביקורת בלתי ניתן לשינוי</strong><span>כל הנחיה, פעולה וגישה לנתונים מתועדות וניתנות לייצוא.</span></div>
+          <div class="wedge__cell"><strong>מוכן למצב מנותק רשת</strong><span>חבילות התקנה חתומות וניתנות לאימות לרשתות מבודדות לחלוטין.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Signup CTA ===== -->
+    <section class="section signup" id="signup">
+      <div class="container">
+        <div class="signup__card">
+          <span class="eyebrow center" style="display:inline-flex;">בקשת הדגמה</span>
+          <h2>הביאו בינה מלאכותית ארגונית אל תוך הארגון שלכם</h2>
+          <p>ראו את SafeLocal פרוסה מול הארכיטקטורה שלכם. במהלך ההערכה שום נתון אינו יוצא מהרשת שלכם — בסביבה מקומית, ב-VPC שלכם, או במצב מנותק רשת מלא.</p>
+          <a class="btn btn--primary btn--lg" href="#signup">בקשו הדגמה</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section section--tint" id="faq">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">שאלות נפוצות טכניות</span>
+          <h2>תשובות לצוותי אבטחה ורכש</h2>
+        </div>
+        <div class="faq">
+          <div class="faq__item">
+            <button class="faq__q">כיצד SafeLocal מבטיחה אפס דליפת נתונים בעת חיפושים באינטרנט?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal מבוססת על ארכיטקטורה דו-לולאתית. הלולאה החיצונית מבצעת אחזור אנונימי של מידע ציבורי מהאינטרנט, דרך פרוקסי יציאה מבודד שאינו נושא מזהים פנימיים, הנחיות או נתוני CRM — רק חיפושים ציבוריים גנריים יוצאים אי-פעם מגבולות הארגון. המידע הציבורי שנאסף עובר טיהור ומוזרם בכיוון אחד בלבד אל הלולאה הפנימית, שם מודל LLM מקומי הרץ כולו על החומרה שלכם ממזג אותו עם הנתונים הפנימיים החסויים. שום נתון פנימי, ייצוג וקטורי (embeddings) או הנחיה אינם נשלחים החוצה אי-פעם, וכל התעבורה היוצאת כפופה למדיניות חסימה כברירת מחדל, עם תיעוד ביקורת מלא.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">מהן דרישות החומרה לפריסה ארגונית מקומית?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal מתאימה את עצמה מתחנת עבודה בודדת ועד אשכולות GPU מרובי-צמתים. פריסה מחלקתית אופיינית רצה על שרת יחיד עם NVIDIA A100/H100 (או 2× RTX 6000 Ada), זיכרון RAM בנפח 128 GB ואחסון NVMe בנפח 2 TB. לפריסות ברוחב כלל-ארגוני אנו מספקים ארכיטקטורת ייחוס לאשכולות GPU מבוססי Kubernetes. הרצה על מעבד (CPU) בלבד נתמכת עבור מודלים קטנים יותר, בתרחישי קצה או בסביבות מנותקות רשת מוגבלות.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">האם ניתן לשלב את SafeLocal בסביבות פנימיות מנותקות רשת?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">כן. SafeLocal תוכננה לתפעול מלא במצב מנותק רשת. מודלים, תלויות ועדכונים מסופקים באמצעות חבילות התקנה חתומות, במצב לא-מקוון. במצב מנותק רשת, ההעשרה של הלולאה החיצונית מושבתת, וכל ההסקה, האוטומציה והשילוב הפנימי רצים כולם בתוך הרשת המבודדת שלכם, ללא צורך בקישוריות יוצאת.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">האם SafeLocal עומדת ב-SOC 2, ב-GDPR וב-HIPAA?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal תוכננה להיות מוכנה ל-SOC 2, תואמת ל-GDPR ומיושרת ל-HIPAA. מכיוון שכל העיבוד מתבצע על תשתית שבשליטתכם, מיקום הנתונים, משך השמירה והגישה אליהם נשלטים במלואם על ידי המדיניות שלכם. SafeLocal כוללת RBAC, יומני ביקורת בלתי ניתנים לשינוי, הצפנה באחסון ובתעבורה, וראיות תאימות הניתנות לייצוא — כדי להאיץ את הביקורות שלכם.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">במה שונה SafeLocal מהרצה עצמאית של Ollama או מודלים בקוד פתוח?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">מערכות קוד פתוח בהרכבה עצמית, כמו Ollama גולמי או JeffyAI, מספקות לכם סביבת הרצה למודל — אך ללא שכבה ארגונית. SafeLocal מוסיפה פריסה מנוהלת (מתקיני MSI/שרת ארגוניים בלחיצה אחת), RBAC ו-SSO ארגוניים, ממשקי API לאוטומציה מול המערכות הפנימיות שלכם, את צינור ההעשרה החיצונית המאובטחת, ביקורת וממשל מרכזיים, ו-SLA ארגוני 24/7 — והופכת ניסוי בלתי מנוהל לפלטפורמת ייצור העומדת ברגולציה.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top"><img src="../assets/img/shield-node.svg" alt="SafeLocal.ai" /><span class="brand__word">SafeLocal<span class="dot">.</span>ai</span></a>
+          <p>ה-AI שלכם. החומרה שלכם. בטוח ומקומי לחלוטין. בינה מלאכותית פרטית ומאובטחת, 100% מקומית, לעסקים צומחים.</p>
+        </div>
+        <div class="footer__col">
+          <h4>מוצר</h4>
+          <a href="#features">פתרונות</a>
+          <a href="legal-ai/">בינה מלאכותית למשרדי עו"ד</a>
+          <a href="enterprise-privacy/">בינה מלאכותית לארגון</a>
+          <a href="#comparison">השוואה</a>
+          <a href="#pricing">תמחור</a>
+        </div>
+        <div class="footer__col">
+          <h4>משאבים</h4>
+          <a href="#wedge">סקירת אבטחה</a>
+          <a href="#faq">שאלות נפוצות טכניות</a>
+          <a href="#signup">בקשת הדגמה</a>
+        </div>
+        <div class="footer__col">
+          <h4>חברה</h4>
+          <a href="mailto:sales@safelocal.ai">צרו קשר עם המכירות</a>
+          <a href="#signup">בקשת הדגמה</a>
+          <a href="../en/">English</a>
+        </div>
+      </div>
+      <div class="footer__bottom">© <span data-year>2026</span> SafeLocal AI. כל הזכויות שמורות.</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

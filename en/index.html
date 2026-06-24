@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>SafeLocal AI — 100% On-Premise Secure Enterprise AI</title>
+  <meta name="description" content="Fully on-premise, self-hosted enterprise AI. Run LLMs and secure automations inside your own network with zero data leakage. SOC 2, GDPR & HIPAA aligned." />
+  <link rel="canonical" href="https://safelocal.ai/en/" />
+  <link rel="alternate" hreflang="en" href="https://safelocal.ai/en/" />
+  <link rel="alternate" hreflang="he" href="https://safelocal.ai/he/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SafeLocal AI" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="he_IL" />
+  <meta property="og:title" content="SafeLocal AI — Your AI. Your Hardware. Completely Safe &amp; Local." />
+  <meta property="og:description" content="Deploy secure, on-premise AI automations that execute inside your local network. Zero data leakage. Total compliance." />
+  <meta property="og:url" content="https://safelocal.ai/en/" />
+  <meta property="og:image" content="https://safelocal.ai/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SafeLocal AI — Your AI. Your Hardware. Completely Safe &amp; Local." />
+  <meta name="twitter:description" content="Deploy secure, on-premise AI automations that execute inside your local network. Zero data leakage. Total compliance." />
+  <meta name="twitter:image" content="https://safelocal.ai/og.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/img/shield-node.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+
+  <!-- AEO: Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SafeLocal AI",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, Linux, On-Premise Appliance",
+    "description": "Fully on-premise, self-hosted enterprise AI platform. Run LLMs and secure automations inside your own network with zero data leakage. SOC 2 ready, GDPR compliant and HIPAA aligned.",
+    "url": "https://safelocal.ai/en/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Capacity-based enterprise licensing. Contact sales for a quote."
+    },
+    "publisher": { "@type": "Organization", "name": "SafeLocal AI", "url": "https://safelocal.ai" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does SafeLocal guarantee zero data leakage during web lookups?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal uses a dual-loop architecture. The Outer Loop performs anonymized public web retrieval through an isolated egress proxy that carries no internal identifiers, prompts, or CRM data. Retrieved public data is sanitized and piped one-way into the Inner Loop, where a local LLM running entirely on your hardware merges it with confidential internal data. No internal data, embeddings, or prompts are ever transmitted externally, and all outbound traffic is governed by default-deny egress policies with full audit logging." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the hardware requirements for local enterprise deployment?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal scales from a single workstation to multi-node GPU clusters. A typical departmental deployment runs on one server with an NVIDIA A100/H100 (or 2x RTX 6000 Ada), 128 GB RAM, and 2 TB NVMe storage. For organization-wide rollouts we provide a reference architecture for Kubernetes-based GPU clusters. CPU-only inference is supported for smaller models in edge or constrained air-gapped scenarios." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can SafeLocal integrate with air-gapped internal environments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. SafeLocal is designed for fully air-gapped operation. Models, dependencies, and updates are delivered through signed, offline installation bundles. In air-gapped mode the Outer Loop enrichment is disabled, and all inference, automation, and internal integration run entirely within your isolated network with no outbound connectivity required." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SafeLocal compliant with SOC 2, GDPR, and HIPAA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SafeLocal is engineered to be SOC 2 ready, GDPR compliant, and HIPAA aligned. Because all processing occurs on infrastructure you control, data residency, retention, and access are fully governed by your own policies. SafeLocal ships with RBAC, immutable audit logs, encryption at rest and in transit, and exportable compliance evidence to accelerate your audits." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is SafeLocal different from running Ollama or open-source models myself?",
+        "acceptedAnswer": { "@type": "Answer", "text": "DIY open-source stacks such as raw Ollama or JeffyAI give you a model runtime but no enterprise layer. SafeLocal adds managed deployment (one-click corporate MSI/server installers), enterprise RBAC and SSO, native automation APIs to your internal systems, the Secure External Enrichment pipeline, centralized audit and governance, and a 24/7 enterprise SLA — turning an unmanaged experiment into a compliant production platform." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a class="brand" href="#top">
+          <img src="../assets/img/shield-node.svg" alt="SafeLocal.ai" />
+          <span class="brand__word">SafeLocal<span class="dot">.</span>ai</span>
+        </a>
+        <ul class="nav__links">
+          <li><a href="#features">Solutions</a></li>
+          <li><a href="#showcase">Architecture</a></li>
+          <li><a href="#comparison">Compare</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+        <div class="nav__right">
+          <div class="lang" id="lang">
+            <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false">🇬🇧 English ▾</button>
+            <div class="lang__menu" role="menu">
+              <a href="../en/">🇬🇧 English</a>
+              <a href="../he/">🇮🇱 עברית</a>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="#signup">Request a Demo</a>
+          <button class="nav__toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="hero__grid">
+          <div>
+            <span class="eyebrow">On-Premise AI for growing teams</span>
+            <h1 class="hero__title">
+              <span class="g">Your AI.</span><br />
+              Your Hardware.<br />
+              Completely<br />
+              <span class="g">Safe &amp; Local.</span>
+            </h1>
+            <p class="hero__sub">Deploy secure AI automations that run inside your own network — on every desktop or on one office appliance. Zero data leakage. Total control.</p>
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--lg" href="#signup">Deploy SafeLocal</a>
+              <a class="btn btn--ghost btn--lg" href="#features">See the two solutions</a>
+            </div>
+          </div>
+
+          <!-- Workbench mockup -->
+          <div class="mock" aria-hidden="true">
+            <div class="mock__bar">
+              <div>
+                <div class="mock__title">On-Prem LLM Workbench</div>
+                <div class="mock__meta">model · llama-3.1-70b · your hardware</div>
+              </div>
+              <span class="pill">Local</span>
+            </div>
+            <div class="mock__body">
+              <div class="msg msg--user">
+                <div class="msg__who">Operations Manager</div>
+                <div class="msg__bubble">Every weekday at 10:00 AM, scan yesterday's orders and email me the ones that need follow-up.</div>
+              </div>
+              <div class="msg msg--ai">
+                <div class="msg__who">SafeLocal · running locally</div>
+                <div class="msg__bubble">Automation created — scheduled daily at 10:00 AM on your hardware. Today's run: 8 orders need follow-up — 3 overdue payments, 5 awaiting stock. Summary emailed to you. ✓</div>
+              </div>
+            </div>
+            <div class="mock__foot">
+              <span>Automation runs on your server</span>
+              <span><strong>0 KB</strong> left your perimeter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Problem band ===== -->
+    <section class="section problem">
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <div class="section__head" style="margin-bottom:0;">
+          <h2>Public cloud AI leaks. DIY AI is unmanaged.</h2>
+          <div class="problem__list">
+            <div class="problem__item"><span class="x">!</span><span>Sending sensitive CRM, financial, and patient data to ChatGPT or Claude means surrendering control to third-party servers.</span></div>
+            <div class="problem__item"><span class="x">!</span><span>Stitching together raw Ollama or JeffyAI setups leaves you with no governance, no compliance, and no enterprise integration.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Solutions: two ways to deploy ===== -->
+    <section class="section" id="features">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Two ways to deploy</span>
+          <h2>Private AI that fits your business</h2>
+          <p class="lead">Built for small and mid-size teams — not just enterprises. Pick the setup that matches how your company works. Both run entirely on your own hardware, with nothing leaving your network.</p>
+        </div>
+
+        <div class="solutions">
+          <!-- Row 1 · left — Solution 1 text (plain background) -->
+          <article class="zig zig--text">
+            <span class="solution__num">Solution 1 · Per desktop</span>
+            <h3>Private AI on every employee's computer</h3>
+            <p>A self-contained AI assistant installed on each workstation. It's closed and runs 100% locally — works without internet, and no data ever leaves the device.</p>
+            <ul class="solution__list">
+              <li>One private assistant per employee, on their own PC</li>
+              <li>Runs fully offline — closed and local</li>
+              <li>Simple one-click Windows install</li>
+              <li>Nothing ever leaves the machine</li>
+            </ul>
+          </article>
+          <!-- Row 1 · right — Solution 1 video (laptop + local AI box) -->
+          <div class="zig zig--video">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="../assets/video/solution-desktop.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <!-- Row 2 · left — Solution 2 video (office appliance) -->
+          <div class="zig zig--video">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="../assets/video/solution-appliance.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <!-- Row 2 · right — Solution 2 text (plain background) -->
+          <article class="zig zig--text">
+            <span class="solution__num">Solution 2 · Office appliance</span>
+            <h3>One secure AI appliance for the whole office</h3>
+            <p>A dedicated AI hardware box that runs locally inside your offices and serves everyone through your internal company server — one shared, managed brain for the whole team.</p>
+            <ul class="solution__list">
+              <li>One appliance shared by the whole team</li>
+              <li>Runs locally on your internal office server</li>
+              <li>Central management and access control</li>
+              <li>Nothing leaves your local network</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Capabilities included in both -->
+        <div class="included">
+          <span class="included__label">Both solutions include</span>
+          <ul class="included__grid">
+            <li>Runs 100% on your hardware</li>
+            <li>Everyday automations &amp; chat</li>
+            <li>Access control &amp; audit logs</li>
+            <li>Connects to your internal tools</li>
+            <li>One-click setup &amp; updates</li>
+            <li>Local data — GDPR-friendly</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Showcase: Secure External Enrichment ===== -->
+    <section class="section section--tint" id="showcase">
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Killer feature</span>
+          <h2>Secure External Enrichment Workflow</h2>
+          <p class="lead">Standard offline chatbots can't touch the outside world. SafeLocal can — safely. Take a real example: automatically preparing a sales rep for a client meeting. SafeLocal gathers public intelligence anonymously, merges it with your most sensitive CRM data locally, and synthesizes the executive brief strictly on-premise. The external world informs your AI without ever seeing your data.</p>
+        </div>
+        <div class="flow">
+          <div class="flow__step">
+            <span class="flow__num">01</span>
+            <div class="flow__tag">Outer Loop · 01</div>
+            <h3>Anonymous Fetch</h3>
+            <p>SafeLocal queries public web sources anonymously for external client data — news, filings, org charts, market signals. Requests carry no internal identity, no prompts, and no CRM data.</p>
+            <span class="flow__note">Identity-stripped egress</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">02</span>
+            <div class="flow__tag">Inner Loop · 02</div>
+            <h3>Private Cross-Referencing</h3>
+            <p>Sanitized public data is piped one-way, securely, into your local infrastructure. It is staged behind your firewall where internal automations can reference it — but nothing flows back out.</p>
+            <span class="flow__note">One-way secure ingestion</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__num">03</span>
+            <div class="flow__tag">Local Node · 03</div>
+            <h3>On-Premise Synthesis</h3>
+            <p>A local LLM merges the external data with confidential internal CRM records to produce a secure, deal-ready client brief — entirely on your hardware.</p>
+            <span class="flow__note">0% of internal data leaves the building</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Comparison ===== -->
+    <section class="section" id="comparison">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">The enterprise comparison</span>
+          <h2>SafeLocal vs. Cloud SaaS AI vs. DIY Open-Source</h2>
+          <p class="lead">A factual capability comparison for enterprise security and procurement teams evaluating on-premise AI against public cloud LLMs and unmanaged open-source stacks.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th class="is-safelocal">SafeLocal Enterprise</th>
+                <th>Cloud SaaS AI (ChatGPT Team / Claude)</th>
+                <th>DIY Open-Source (JeffyAI / Ollama)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Data Privacy</td><td class="is-safelocal"><span class="yes">100% Isolated</span> — never leaves your network</td><td class="meh">Third-Party Servers — processed by the vendor</td><td class="meh">Local but Unmanaged — no policy enforcement</td></tr>
+              <tr><td>Internal System Automation</td><td class="is-safelocal"><span class="yes">Native Enterprise APIs</span> — CRM, ERP, data lake</td><td class="meh">Prohibited / Cloud-Restricted — no access to internal systems</td><td class="meh">Lacking Management UI — manual scripting only</td></tr>
+              <tr><td>Deployment</td><td class="is-safelocal"><span class="yes">One-Click MSI / Server</span> — corporate-ready installers</td><td class="meh">Cloud Only — no on-prem option</td><td class="meh">Manual Terminal Config — CLI assembly required</td></tr>
+              <tr><td>Secure External Enrichment</td><td class="is-safelocal"><span class="yes">Yes — Dual-Loop</span> (public data in, nothing out)</td><td class="meh">No — your data goes to the vendor</td><td class="meh">No — not available</td></tr>
+              <tr><td>Compliance (SOC 2 / GDPR / HIPAA)</td><td class="is-safelocal"><span class="yes">Built-in &amp; Auditable</span> — evidence on demand</td><td class="meh">Shared-Responsibility — vendor-dependent</td><td class="meh">Your Problem — no built-in controls</td></tr>
+              <tr><td>Access Control &amp; Audit</td><td class="is-safelocal"><span class="yes">Enterprise RBAC + Logs</span> — SSO / SAML / OIDC</td><td class="meh">Limited Admin — vendor console</td><td class="meh">None — DIY only</td></tr>
+              <tr><td>Support &amp; SLA</td><td class="is-safelocal"><span class="yes">24/7 Enterprise SLA</span> — dedicated engineering</td><td class="meh">Tiered Support — plan-dependent</td><td class="meh">Community Forums — best-effort</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="text-align:center;margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--ghost" href="../vs/chatgpt/">SafeLocal vs ChatGPT →</a>
+          <a class="btn btn--ghost" href="../vs/jeffyai/">SafeLocal vs JeffyAI →</a>
+        </p>
+        <p class="cmp-note">Comparison reflects typical enterprise configurations. ChatGPT, Claude, JeffyAI, and Ollama are trademarks of their respective owners and are referenced for comparison only.</p>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="section section--tint" id="pricing">
+      <span class="glow glow--a"></span>
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple licensing, sized to your team</h2>
+          <p class="lead">Pick by how you deploy — per desktop, one office appliance, or a full multi-site rollout. No per-token surprises. Everything runs on your own hardware.</p>
+        </div>
+        <div class="price-grid">
+          <!-- Solution 1 -->
+          <div class="plan">
+            <h3>Desktop</h3>
+            <div class="plan__price">Custom <span>/ per seat · annual</span></div>
+            <p class="plan__desc">Private AI on each employee's own computer. Great for small teams getting started.</p>
+            <ul class="plan__list">
+              <li>Per-seat annual license</li>
+              <li>Local standalone install (Windows)</li>
+              <li>Fully offline — zero data leaves the device</li>
+              <li>Email &amp; business-hours support</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#signup">Get a quote</a>
+          </div>
+          <!-- Solution 2 — most popular for mid-size -->
+          <div class="plan plan--featured">
+            <span class="plan__flag">Most popular</span>
+            <h3>Office Appliance</h3>
+            <div class="plan__price">Custom <span>/ per appliance · annual</span></div>
+            <p class="plan__desc">One secure AI box for the whole office, shared over your internal server.</p>
+            <ul class="plan__list">
+              <li>One on-prem appliance for the team</li>
+              <li>Shared via your internal company server</li>
+              <li>Central management + access control</li>
+              <li>Onboarding &amp; priority support</li>
+            </ul>
+            <a class="btn btn--primary btn--block" href="#signup">Request a quote</a>
+          </div>
+          <!-- Enterprise — kept, on the right -->
+          <div class="plan">
+            <h3>Enterprise</h3>
+            <div class="plan__price">Custom <span>/ organization</span></div>
+            <p class="plan__desc">Multi-site rollouts with advanced governance and compliance.</p>
+            <ul class="plan__list">
+              <li>Everything in Office Appliance</li>
+              <li>Multi-node &amp; air-gapped options</li>
+              <li>SSO, audit &amp; exportable compliance evidence</li>
+              <li>Dedicated engineer + 24/7 SLA</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#signup">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Security wedge ===== -->
+    <section class="section wedge" id="wedge">
+      <span class="glow glow--a"></span>
+      <span class="glow glow--b"></span>
+      <div class="container">
+        <span class="eyebrow" style="color:#34d6ab;">Security posture</span>
+        <h2>Built for security teams that assume breach</h2>
+        <p>SafeLocal inverts the cloud AI model: instead of sending your data to the model, we bring the model to your data. Every layer is designed around a default-deny posture, least privilege, and complete auditability.</p>
+        <div class="wedge__grid">
+          <div class="wedge__cell"><strong>Zero egress by default</strong><span>No data leaves your perimeter unless an explicit, audited policy allows it.</span></div>
+          <div class="wedge__cell"><strong>AES-256 &amp; TLS 1.3</strong><span>Encryption at rest and in transit across every node and connector.</span></div>
+          <div class="wedge__cell"><strong>Immutable audit trail</strong><span>Every prompt, action, and data access is logged and exportable.</span></div>
+          <div class="wedge__cell"><strong>Air-gap ready</strong><span>Signed, verifiable installation bundles for fully isolated networks.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Signup CTA ===== -->
+    <section class="section signup" id="signup">
+      <div class="container">
+        <div class="signup__card">
+          <span class="eyebrow center" style="display:inline-flex;">Request a demo</span>
+          <h2>Bring enterprise AI inside your perimeter</h2>
+          <p>See SafeLocal deployed against your own architecture. No data leaves your network during evaluation — on-prem, in your VPC, or fully air-gapped.</p>
+          <a class="btn btn--primary btn--lg" href="#signup">Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section section--tint" id="faq">
+      <div class="container">
+        <div class="section__head center">
+          <span class="eyebrow">Technical FAQ</span>
+          <h2>Answers for security &amp; procurement</h2>
+        </div>
+        <div class="faq">
+          <div class="faq__item">
+            <button class="faq__q">How does SafeLocal guarantee zero data leakage during web lookups?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal uses a dual-loop architecture. The Outer Loop performs anonymized public web retrieval through an isolated egress proxy that carries no internal identifiers, prompts, or CRM data — only generic public lookups ever leave your perimeter. Retrieved public data is sanitized and piped one-way into the Inner Loop, where a local LLM running entirely on your hardware merges it with confidential internal data. No internal data, embeddings, or prompts are ever transmitted externally, and all outbound traffic is governed by default-deny egress policies with full audit logging.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">What are the hardware requirements for local enterprise deployment?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal scales from a single workstation to multi-node GPU clusters. A typical departmental deployment runs on one server with an NVIDIA A100/H100 (or 2× RTX 6000 Ada), 128 GB RAM, and 2 TB NVMe storage. For organization-wide rollouts we provide a reference architecture for Kubernetes-based GPU clusters. CPU-only inference is supported for smaller models in edge or constrained air-gapped scenarios.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">Can SafeLocal integrate with air-gapped internal environments?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">Yes. SafeLocal is designed for fully air-gapped operation. Models, dependencies, and updates are delivered through signed, offline installation bundles. In air-gapped mode the Outer Loop enrichment is disabled, and all inference, automation, and internal integration run entirely within your isolated network with no outbound connectivity required.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">Is SafeLocal compliant with SOC 2, GDPR, and HIPAA?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">SafeLocal is engineered to be SOC 2 ready, GDPR compliant, and HIPAA aligned. Because all processing occurs on infrastructure you control, data residency, retention, and access are fully governed by your own policies. SafeLocal ships with RBAC, immutable audit logs, encryption at rest and in transit, and exportable compliance evidence to accelerate your audits.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q">How is SafeLocal different from running Ollama or open-source models myself?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq__a"><div class="faq__a-inner">DIY open-source stacks such as raw Ollama or JeffyAI give you a model runtime but no enterprise layer. SafeLocal adds managed deployment (one-click corporate MSI/server installers), enterprise RBAC and SSO, native automation APIs to your internal systems, the Secure External Enrichment pipeline, centralized audit and governance, and a 24/7 enterprise SLA — turning an unmanaged experiment into a compliant production platform.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top"><img src="../assets/img/shield-node.svg" alt="SafeLocal.ai" /><span class="brand__word">SafeLocal<span class="dot">.</span>ai</span></a>
+          <p>Your AI. Your hardware. Completely safe &amp; local. Private, on-premise AI for growing teams — on every desktop or one office appliance.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="#features">Solutions</a>
+          <a href="#showcase">Secure Enrichment</a>
+          <a href="../vs/chatgpt/">vs ChatGPT</a>
+          <a href="../vs/jeffyai/">vs JeffyAI</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="#wedge">Security overview</a>
+          <a href="#faq">Technical FAQ</a>
+          <a href="#signup">Request a demo</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="mailto:sales@safelocal.ai">Contact sales</a>
+          <a href="#signup">Request demo</a>
+          <a href="../he/">עברית</a>
+        </div>
+      </div>
+      <div class="footer__bottom">© <span data-year>2026</span> SafeLocal AI. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

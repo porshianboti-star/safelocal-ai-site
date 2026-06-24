@@ -1,0 +1,8 @@
+# SafeLocal AI — robots.txt
+# Allow all reputable crawlers, including AI answer engines (AEO).
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://safelocal.ai/sitemap.xml
